@@ -1,9 +1,28 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { BrowserRouter, Match, Miss } from 'react-router';
 import App from './App';
+import Settings from './components/Settings';
+import Favorites from './components/Favorites';
+import Jokes from './components/Jokes';
+
 import './index.css';
 
-ReactDOM.render(
-  <App />,
+const Root = () => {
+  return (
+    <BrowserRouter>
+      <div className="router">
+        <Match exactly pattern="/" component={App}/>
+        <Match exactly pattern="/settings" component={Settings}/>
+        <Match exactly pattern="/favorites" component={Favorites}/>
+        <Match exactly pattern="/jokes" component={Jokes}/>
+      </div>
+    </BrowserRouter>
+  )
+}
+
+
+render (
+  <Root />,
   document.getElementById('root')
 );
