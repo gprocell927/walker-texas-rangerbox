@@ -1,11 +1,29 @@
+import React, { Component } from 'react'
 import axios from 'axios'
 
-const randomJokes =
-    axios
-      .get('http://api.icndb.com/jokes/random')
-      .then(res => res.data.value.joke)
-      .catch((err) => console.log(err))
+class RandomJokes extends Component {
 
+  constructor(props){
+    super(props)
+    this.state = {
+      jokes: []
+    }
+  }
 
+componentDidMount() {
+      axios
+        .get('http://api.icndb.com/jokes/random')
+        .then(res => res.data.value.joke)
+        .then(jokes => this.setState({ jokes }))
+}
 
-export default randomJokes;
+render() {
+  return (
+      <div className="random-joke">
+        <span>{this.state.jokes}</span>
+      </div>
+    )
+  }
+}
+
+export default RandomJokes;

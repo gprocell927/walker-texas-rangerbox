@@ -6,6 +6,7 @@ import Settings from './components/Settings';
 import Favorites from './components/Favorites';
 import Jokes from './components/Jokes';
 
+
 import './index.css';
 
 const Root = () => {
