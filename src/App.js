@@ -10,12 +10,16 @@ class App extends Component {
       jokes: []
     }
   }
-  render() {
 
+  componentDidMount() {
     const randomJokes =
       axios
         .get('http://api.icndb.com/jokes/random')
-        .then(res => console.log(res.data.value.joke))
+        .then(res => res.data.value.joke)
+        .then(jokes => this.setState({ jokes }))
+  }
+  render() {
+
 //the promise console logs as a string, but I cannot get it to render on page (cannot read property then of undefined)
 
     return (
@@ -29,7 +33,7 @@ class App extends Component {
 
       </div>
       <div className="random-joke">
-        <span>{randomJokes.data}</span>
+        <span>{this.state.jokes}</span>
       </div>
       <form>
         <input
