@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter, Match, Miss } from 'react-router';
+import { BrowserRouter, Match } from 'react-router';
 import App from './App';
 import Settings from './components/Settings';
 import Favorites from './components/Favorites';
