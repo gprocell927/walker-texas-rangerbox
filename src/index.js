@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter, Match } from 'react-router';
-import App from './App';
-import Settings from './components/Settings';
-import Favorites from './components/Favorites';
-import Jokes from './components/Jokes';
+import App from './components/App/App';
+import Settings from './components/Settings/Settings';
+import Favorites from './components/Favorites/Favorites';
+import Jokes from './components/Jokes/Jokes';
 
 
 import './index.css';
