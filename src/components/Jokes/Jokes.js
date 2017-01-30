@@ -1,10 +1,10 @@
 import React from 'react';
 
-
 const Jokes = (props) => {
   const { handleInputChange, handleButtonClick, displayRequestedJokes } = props
     return (
-      <div className = "Jokes">
+    <div>
+      <div>
         <form>
           <input
             className="joke-number"
@@ -13,14 +13,15 @@ const Jokes = (props) => {
           />
           <button
             className="get-jokes-btn"
-            children="Get Jokes"
             onClick={(e) => handleButtonClick(e)}
+            children="Get Jokes"
           />
-      </form>
+        </form>
+      </div>
       <div className="requested-jokes">
         {displayRequestedJokes}
       </div>
-    </div>
+    </div>  
     );
   }
 
