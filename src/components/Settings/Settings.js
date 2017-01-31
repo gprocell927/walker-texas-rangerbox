@@ -3,32 +3,53 @@ import { Link } from 'react-router'
 import RandomJokes from '../RandomJokes/RandomJokes'
 import axios from 'axios'
 
-
 class Settings extends Component {
-
-  setname() {
-    
+  constructor(props){
+    super(props)
+    this.state = {
+      name: '',
+      firstName: '',
+      lastName: ''
+    }
   }
+
+  handleNameChange(e) {
+    this.setState({ name: e.target.value })
+  }
+
+  setName(e) {
+    e.preventDefault()
+    const splitName = this.state.name.split(' ')
+    this.setState({ firstName: splitName[0] })
+    this.setState({ lastName: splitName[1] })
+    axios
+      .get(`http://api.icndb.com/jokes/random?firstName=${this.state.firstName}&amp;lastName=${this.state.lastName}`)
+      .then((res) => console.log(res))
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <h2>Chuck Norris Joke Machine</h2>
-          <li className="settings-btn">
+          <button className="settings-btn">
             <Link to={'/jokes'}
               style={{ textDecoration: 'none'}}>
             Jokes
           </Link>
-          </li>
+        </button>
         </div>
         <RandomJokes />
         <form>
           <span>Set Name:</span>
-          <input className="name-input"/>
+          <input
+            className="name-input"
+            onChange={(e) => this.handleNameChange(e)}
+          />
           <button
             children="Set"
             className="set-btn"
-            onClick={(e) => setName}
+            onClick={(e) => this.setName(e)}
           />
           <button
             children="Reset"
