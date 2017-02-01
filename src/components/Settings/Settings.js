@@ -24,8 +24,11 @@ class Settings extends Component {
     this.setState({ lastName: splitName[1] })
     axios
       .get(`http://api.icndb.com/jokes/random?firstName=${this.state.firstName}&amp;lastName=${this.state.lastName}`)
-      .then((res) => console.log(res))
-  }
+      .then(res => res.data.value.joke)
+      .then(customJokes => this.setState({ jokes }))
+      }
+//jokes is not defined... how do I set the state and pass it back to it's parent component?
+
 
   render() {
     return (
