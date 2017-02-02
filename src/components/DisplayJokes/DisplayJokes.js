@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router'
 
 const Jokes = (props) => {
   const { handleInputChange, handleButtonClick, displayRequestedJokes } = props
@@ -11,11 +12,12 @@ const Jokes = (props) => {
             placeholder="0"
             onChange={(e) => handleInputChange(e)}
           />
-          <button
+          <Link to='/jokes'><button
             className="get-jokes-btn"
             onClick={(e) => handleButtonClick(e)}
-            children="Get Jokes"
-          />
+            children="Get Jokes">Yo
+          </button>
+        </Link>
         </form>
       </div>
       <div className="requested-jokes">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { browserHistory } from 'react-router'
 import RandomJokes from '../RandomJokes/RandomJokes'
 import DisplayJokes from '../DisplayJokes/DisplayJokes'
 import './App.css';
@@ -34,7 +35,7 @@ class App extends Component {
 
    handleChange (e){
      this.setState({ numJokes: e.target.value })
-      } // end of handleChange
+   } // end of handleChange
       //sets the requested number of jokes to numJokes state
 
 
