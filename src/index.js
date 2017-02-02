@@ -8,12 +8,11 @@ import DisplayJokes from './components/DisplayJokes/DisplayJokes'
 import './index.css'
 
 
-render ((
+render(
   <Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <Route path="/settings" component={Settings}/>
-      <Route path="/favorites" component={Favorites}/>
-      <Route path="/jokes" component={DisplayJokes}/>
-    </Route>
+    <Route path="/" component={App}/>
+    <Route path="/settings" component={Settings}/>
+    <Route path="/favorites" component={Favorites}/>
+    <Route path="/jokes" component={DisplayJokes}/>
   </Router>
-  ),document.getElementById('root'))
+  ,document.getElementById('root'))

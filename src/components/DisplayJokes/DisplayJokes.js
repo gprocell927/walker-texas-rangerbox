@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router'
+import Header from '../Header/Header'
 
 const Jokes = (props) => {
   const { handleInputChange, handleButtonClick, displayRequestedJokes } = props
     return (
     <div>
+      <Header />
       <div>
         <form>
           <input
@@ -12,19 +14,22 @@ const Jokes = (props) => {
             placeholder="0"
             onChange={(e) => handleInputChange(e)}
           />
-          <Link to='/jokes'><button
+          <button
             className="get-jokes-btn"
             onClick={(e) => handleButtonClick(e)}
-            children="Get Jokes">Yo
+          >
+          <Link to='/jokes'
+            style={{ textDecoration: 'none' }}>
+            Get Jokes
+          </Link>
           </button>
-        </Link>
         </form>
       </div>
       <div className="requested-jokes">
         {displayRequestedJokes}
       </div>
     </div>
-    );
+    )
   }
 
-export default Jokes;
+export default Jokes
