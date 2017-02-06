@@ -32,17 +32,7 @@ class Settings extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Chuck Norris Joke Machine</h2>
-          <button className="settings-btn">
-            <Link to='/jokes'
-              style={{ textDecoration: 'none'}}>
-            Jokes
-          </Link>
-        </button>
-        </div>
-        <RandomJokes />
+      <div>
         <form>
           <span>Set Name:</span>
           <input

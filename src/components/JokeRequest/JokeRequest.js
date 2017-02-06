@@ -9,6 +9,7 @@ const JokeRequest = (props) => {
       <input
         className="joke-number"
         placeholder="0"
+        value={props.reqJokes}
         onChange={(e) => handleInputChange(e)}
       />
       <button

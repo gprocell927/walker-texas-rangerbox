@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Header from '../components/Header/Header'
 import RandomJokes from '../components/RandomJokes/RandomJokes'
-import DisplayJokes from '../components/DisplayJokes/DisplayJokes'
+import JokeRequest from '../components/JokeRequest/JokeRequest'
 import './App.css';
 
 class App extends Component {
@@ -14,13 +14,6 @@ class App extends Component {
     }
   } // end of constructor
 
-  displayJokes() {
-    return this.state.reqJokes
-    .map ( (j,i) => {
-      console.log(j)
-      return ( <p key={ i }>{j}</p> )
-    })
-  }
 
   handleClick (e) {
     e.preventDefault()
@@ -28,7 +21,8 @@ class App extends Component {
       .get(`http://api.icndb.com/jokes/random/${this.state.numJokes}?escape=javascript`)
       .then(res => {
         const reqJokes = res.data.value.map( r => r.joke )
-        this.setState({ reqJokes }) // sets jokes as an array of jokes
+        this.setState({ reqJokes })
+         // sets jokes as an array of jokes
           }
         )
       } // end of handleClick
@@ -40,17 +34,23 @@ class App extends Component {
 
 
   render() {
+    //make child object that has state and pass it to DisplayJokes
+    const Children = React.cloneElement(this.props.children, {
+		    numJokes: this.state.jokes,
+        reqJokes: this.state.reqJokes
+      }
+    )
     return (
       <div>
         <Header />
         <RandomJokes />
-        <DisplayJokes
+        <JokeRequest
           handleInputChange={ (e) => this.handleChange(e) }
           handleButtonClick={ (e) => this.handleClick(e) }
-          displayRequestedJokes={ this.displayJokes() }
         />
         <button children="Favorites" />
         <span>Click Get Jokes!</span>
+        { Children }
       </div>
       )
     }
