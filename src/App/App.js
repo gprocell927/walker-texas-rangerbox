@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import axios from 'axios'
-import { browserHistory } from 'react-router'
-import RandomJokes from '../RandomJokes/RandomJokes'
-import DisplayJokes from '../DisplayJokes/DisplayJokes'
+import Header from '../components/Header/Header'
+import RandomJokes from '../components/RandomJokes/RandomJokes'
+import DisplayJokes from '../components/DisplayJokes/DisplayJokes'
 import './App.css';
 
 class App extends Component {
@@ -40,16 +40,9 @@ class App extends Component {
 
 
   render() {
-    console.log(this)
     return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Chuck Norris Joke Machine</h2>
-          <button
-            className="settings-btn"
-            children="Settings"
-          />
-        </div>
+      <div>
+        <Header />
         <RandomJokes />
         <DisplayJokes
           handleInputChange={ (e) => this.handleChange(e) }

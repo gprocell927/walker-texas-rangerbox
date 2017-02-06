@@ -72,7 +72,6 @@ class Settings extends Component {
             </label>
           </div>
         </form>
-
       </div>
     )
   }

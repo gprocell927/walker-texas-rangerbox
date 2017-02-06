@@ -1,29 +1,18 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { BrowserRouter, Match } from 'react-router';
-import App from './components/App/App';
-import Settings from './components/Settings/Settings';
-import Favorites from './components/Favorites/Favorites';
-import DisplayJokes from './components/DisplayJokes/DisplayJokes';
+import React from 'react'
+import { render } from 'react-dom'
+import { Router, Route, browserHistory } from 'react-router'
+import App from './App/App'
+import Settings from './components/Settings/Settings'
+import Favorites from './components/Favorites/Favorites'
+import DisplayJokes from './components/DisplayJokes/DisplayJokes'
+import './index.css'
 
 
-import './index.css';
-
-const Root = () => {
-  return (
-    <BrowserRouter>
-      <div className="router">
-        <Match exactly pattern="/" component={App}/>
-        <Match exactly pattern="/settings" component={Settings}/>
-        <Match exactly pattern="/favorites" component={Favorites}/>
-        <Match exactly pattern="/jokes" component={DisplayJokes}/>
-      </div>
-    </BrowserRouter>
-  )
-}
-
-
-render (
-  <Root />,
-  document.getElementById('root')
-);
+render(
+  <Router history={browserHistory}>
+    <Route path="/" component={App}/>
+    <Route path="/settings" component={Settings}/>
+    <Route path="/favorites" component={Favorites}/>
+    <Route path="/jokes" component={DisplayJokes}/>
+  </Router>
+  ,document.getElementById('root'))
