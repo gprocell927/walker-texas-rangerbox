@@ -12,7 +12,7 @@ class RandomJokes extends Component {
 
 componentDidMount() {
       axios
-        .get('http://api.icndb.com/jokes/random')
+        .get('http://api.icndb.com/jokes/random?escape=javascript')
         .then(res => res.data.value.joke)
         .then(jokes => this.setState({ jokes }))
 } // move jokes and componentDidMount to app
