@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, browserHistory } from 'react-router'
-import App from './components/App/App'
+import App from './App/App'
 import Settings from './components/Settings/Settings'
 import Favorites from './components/Favorites/Favorites'
 import DisplayJokes from './components/DisplayJokes/DisplayJokes'

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Header from '../Header/Header'
-import RandomJokes from '../RandomJokes/RandomJokes'
-import DisplayJokes from '../DisplayJokes/DisplayJokes'
+import Header from '../components/Header/Header'
+import RandomJokes from '../components/RandomJokes/RandomJokes'
+import DisplayJokes from '../components/DisplayJokes/DisplayJokes'
 import './App.css';
 
 class App extends Component {
