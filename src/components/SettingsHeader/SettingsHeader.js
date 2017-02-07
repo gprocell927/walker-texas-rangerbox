@@ -1,16 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-const Header = (props) => {
-  console.log(props)
+const SettingsHeader = (props) => {
   return (
     <div className="App">
       <div className="App-header">
         <h2>Chuck Norris Joke Machine</h2>
-          <button className="settings-btn">
-            <Link to='/settings'
+          <button className="jokes-btn">
+            <Link to='/jokes'
              style={{ textDecoration: 'none'}}>
-            Settings
+            Jokes
             </Link>
           </button>
       </div>
@@ -18,4 +17,4 @@ const Header = (props) => {
   )
 }
 
-export default Header
+export default SettingsHeader

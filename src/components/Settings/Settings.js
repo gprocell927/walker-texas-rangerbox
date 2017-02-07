@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
-import RandomJokes from '../RandomJokes/RandomJokes'
 import axios from 'axios'
 
 class Settings extends Component {
@@ -29,6 +27,7 @@ class Settings extends Component {
       }
 //jokes is not defined... how do I set the state and pass it back to it's parent component?
 
+//pass refs to Header?
 
   render() {
     return (
