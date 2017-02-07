@@ -7,7 +7,8 @@ class Settings extends Component {
     this.state = {
       name: '',
       firstName: '',
-      lastName: ''
+      lastName: '',
+      selectedControl: 'off'
     }
   }
 
@@ -18,16 +19,23 @@ class Settings extends Component {
   setName(e) {
     e.preventDefault()
     const splitName = this.state.name.split(' ')
-    this.setState({ firstName: splitName[0] })
     this.setState({ lastName: splitName[1] })
+    console.log(this.state.lastName) //returns empty?? async shenangigans
+    this.changeName()
+  }
+
+  changeName() {
     axios
       .get(`http://api.icndb.com/jokes/random?firstName=${this.state.firstName}&amp;lastName=${this.state.lastName}`)
       .then(res => res.data.value.joke)
       // .then(customJokes => this.setState({ jokes }))
       }
-//jokes is not defined... how do I set the state and pass it back to it's parent component?
 
-//pass refs to Header?
+      parentalControls(e){
+        this.setState({ selectedControl: e.target.value })
+        console.log("control: ", this.state.selectedControl)
+      }
+
 
   render() {
     return (
@@ -49,14 +57,24 @@ class Settings extends Component {
           />
           <span>Parental Controls: </span>
           <div className="radio">
-            <label>
-              <input type="radio" value="on" checked={false}/>
+            <label className="onRadio">
+              <input
+                type="radio"
+                value="on"
+                checked={this.state.selectedControl === 'on'}
+                onChange={((e) => this.parentalControls(e))}
+              />
                 On
             </label>
           </div>
           <div className="radio">
-            <label>
-              <input type="radio" value="off" checked={false}/>
+            <label className="offRadio">
+              <input
+                type="radio"
+                value="off"
+                checked={this.state.selectedControl === 'off'}
+                onChange={(e) => this.parentalControls(e).bind(this)}
+              />
                 Off
             </label>
           </div>
