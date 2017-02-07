@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-const SettingsHeader = (props) => {
+const SettingsHeader = () => {
   return (
     <div className="App">
       <div className="App-header">
