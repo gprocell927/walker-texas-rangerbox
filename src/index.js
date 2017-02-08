@@ -12,9 +12,9 @@ render(
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRedirect to="/jokes" />
-      <Route path="/settings" component={Settings}/>
       <Route path="/favorites" component={Favorites}/>
       <Route path="/jokes" component={DisplayJokes}/>
+      <Route path="/settings" component={Settings}/>
     </Route>
   </Router>
   ,document.getElementById('root'))

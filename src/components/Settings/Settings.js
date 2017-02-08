@@ -8,7 +8,7 @@ class Settings extends Component {
       name: '',
       firstName: '',
       lastName: '',
-      selectedControl: 'off'
+      checked: true
     }
   }
 
@@ -31,16 +31,21 @@ class Settings extends Component {
       // .then(customJokes => this.setState({ jokes }))
       }
 
-      parentalControls(e){
-        this.setState({ selectedControl: e.target.value })
-        console.log("control: ", this.state.selectedControl)
+    handleCheck(e){
+      console.log("Button clicked:",e.target.value)
+      if(this.state.checked === e.target.checked) {
+        this.setState({
+          checked: e.target.checked
+        })
+      }else {
+        this.setState({ checked: !e.target.checked })
       }
-
+    }
 
   render() {
     return (
       <div>
-        <form>
+        <form name="settingsForm">
           <span>Set Name:</span>
           <input
             className="name-input"
@@ -60,9 +65,10 @@ class Settings extends Component {
             <label className="onRadio">
               <input
                 type="radio"
+                name="radioBtn"
                 value="on"
-                checked={this.state.selectedControl === 'on'}
-                onChange={((e) => this.parentalControls(e))}
+                checked={this.state.checked}
+                onChange={((e) => this.handleCheck(e))}
               />
                 On
             </label>
@@ -72,8 +78,9 @@ class Settings extends Component {
               <input
                 type="radio"
                 value="off"
-                checked={this.state.selectedControl === 'off'}
-                onChange={(e) => this.parentalControls(e).bind(this)}
+                checked={!this.state.checked}
+                name="radioBtn"
+                onChange={(e) => this.handleCheck(e)}
               />
                 Off
             </label>
