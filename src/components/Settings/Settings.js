@@ -33,14 +33,14 @@ class Settings extends Component {
 
     handleCheck(e){
       console.log("Button clicked:",e.target.value)
-      if(this.state.checked === e.target.checked) {
         this.setState({
-          checked: e.target.checked
+          checked: e.target.value === 'on'
         })
-      }else {
-        this.setState({ checked: !e.target.checked })
       }
-    }
+      // }else {
+      //   this.setState({ checked: !e.target.checked })
+      // }
+
 
   render() {
     return (
