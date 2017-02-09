@@ -1,0 +1,26 @@
+form {
+  display: flex;
+  justify-content: center;
+}
+
+.parentalControls {
+  display: flex;
+  justify-content: center;
+}
+
+span {
+  padding-right: 10px;
+}
+
+input, button {
+  margin-right: 10px;
+}
+
+button {
+  border-style: none;
+  border-radius: 5%
+}
+
+.settings{
+  background: rgb(29, 53, 63)
+}

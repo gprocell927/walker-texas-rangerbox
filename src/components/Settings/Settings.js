@@ -1,91 +1,90 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import './Settings.css'
 
 class Settings extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      name: '',
-      firstName: '',
-      lastName: '',
-      checked: true
-    }
-  }
-
-  handleNameChange(e) {
-    this.setState({ name: e.target.value })
-  }
 
   setName(e) {
     e.preventDefault()
-    const splitName = this.state.name.split(' ')
-    this.setState({ lastName: splitName[1] })
-    console.log(this.state.lastName) //returns empty?? async shenangigans
-    this.changeName()
+    const name = this.refs.nameInput.value
+    this.props.setName(name)
   }
 
-  changeName() {
-    axios
-      .get(`http://api.icndb.com/jokes/random?firstName=${this.state.firstName}&amp;lastName=${this.state.lastName}`)
-      .then(res => res.data.value.joke)
-      // .then(customJokes => this.setState({ jokes }))
-      }
+  // changeName() {
+  //   axios
+  //     .get(`http://api.icndb.com/jokes/random?firstName=${this.state.firstName}&amp;lastName=${this.state.lastName}`)
+  //     .then(res => res.data.value.joke)
+  //     // .then(customJokes => this.setState({ jokes }))
+  //     }
 
-    handleCheck(e){
-      console.log("Button clicked:",e.target.value)
-        this.setState({
-          checked: e.target.value === 'on'
-        })
-      }
-      // }else {
-      //   this.setState({ checked: !e.target.checked })
-      // }
+  handleCheck(e){
+    this.setState({
+      checked: e.target.value === 'on'
+    })
+    this.parentalControls(e)
+  }
 
+  parentalControls(e){
+    //if on/off is checked, make call to appropriate end points
+    if (e.target.value === 'on'){
+      axios
+        .get('http://api.icndb.com/jokes/random?limitTo=[nerdy]?escape=javascript')
+        .then(res => res.data.value.joke)
+        .then(jokes => this.setState({ jokes }))
+    } else {
+      axios
+        .get('http://api.icndb.com/jokes/random?limitTo=[explicit]?escape=javascript')
+        .then(res => res.data.value.joke)
+        .then(jokes => this.setState({ jokes }))
+    }
+  }
 
   render() {
     return (
-      <div>
+      <div className="settings">
         <form name="settingsForm">
-          <span>Set Name:</span>
+          <span className="setName">Set Name:</span>
           <input
+            ref="nameInput"
             className="name-input"
-            onChange={(e) => this.handleNameChange(e)}
           />
           <button
-            children="Set"
+            children="SET"
             className="set-btn"
             onClick={(e) => this.setName(e)}
           />
           <button
-            children="Reset"
+            children="RESET"
             className="reset-btn"
           />
-          <span>Parental Controls: </span>
-          <div className="radio">
-            <label className="onRadio">
-              <input
-                type="radio"
-                name="radioBtn"
-                value="on"
-                checked={this.state.checked}
-                onChange={((e) => this.handleCheck(e))}
-              />
-                On
-            </label>
+          </form>
+          <div className="parentalControls">
+            <span>Parental Controls: </span>
+            <div className="radio">
+              <label className="onRadio">
+                <input
+                  type="radio"
+                  name="radioBtn"
+                  value="on"
+                  checked={this.props.censorJokes}
+                  onChange={((e) => this.handleCheck(e))}
+                />
+                  On
+              </label>
+            </div>
+            <div className="radio">
+              <label className="offRadio">
+                <input
+                  type="radio"
+                  value="off"
+                  checked={!this.props.censorJokes}
+                  name="radioBtn"
+                  onChange={(e) => this.handleCheck(e)}
+                />
+                  Off
+              </label>
+            </div>
           </div>
-          <div className="radio">
-            <label className="offRadio">
-              <input
-                type="radio"
-                value="off"
-                checked={!this.state.checked}
-                name="radioBtn"
-                onChange={(e) => this.handleCheck(e)}
-              />
-                Off
-            </label>
-          </div>
-        </form>
       </div>
     )
   }
