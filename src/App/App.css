@@ -1,5 +1,5 @@
 body{
-  background: rgb(29, 53, 63);
+  background: #1c3c70;
   color: white;
   font-family: 'Karla', sans-serif;
 }
@@ -40,6 +40,8 @@ h2 {
   background: rgb(255,255,255);
 }
 .random-joke{
+  display:flex;
+  justify-content: center;
   margin: 0 auto 5px;
   width: 75%;
   border: dotted 1px white;
@@ -55,7 +57,6 @@ h2 {
   float: right;
   display: block;
   margin-bottom: 100px;
-  background-color: #f44336;
   color: white;
   text-decoration: none;
   display: inline-block;
