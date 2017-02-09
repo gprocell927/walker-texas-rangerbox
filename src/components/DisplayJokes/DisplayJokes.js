@@ -1,10 +1,11 @@
 import React from 'react'
+import './DisplayJokes.css'
 
 const displayJokes = (props) => {
   return props.reqJokes
   .map ( (j,i) => {
     console.log(j)
-    return ( <p key={ i }>{j}</p> )
+    return ( <p key={ i }>{j}&#9734;</p> )
   })
 }
 
